@@ -132,4 +132,4 @@ Guidelines:
 """
 ```
 
-And that's all. This project demonstrates how to build a production-ready AI agent using LangChain and AWS Bedrock. It's just a boilerplate, but it can be extended to create more complex agents with additional capabilities and understand how AI agents works
+And that's all. This project demonstrates how to build a production-ready AI agent using LangChain and AWS Bedrock. It's just a boilerplate, but it can be extended to create more complex agents with additional capabilities and understand how AI agents work.
