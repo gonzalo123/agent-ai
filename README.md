@@ -132,4 +132,6 @@ Guidelines:
 """
 ```
 
+Now we can invoke our agent by asking questions such as 'What’s the square root of 16 divided by two, squared?'. The agent will iterate alone using only the provided tools to obtain the result.
+
 And that's all. This project demonstrates how to build a production-ready AI agent using LangChain and AWS Bedrock. It's just a boilerplate, but it can be extended to create more complex agents with additional capabilities and understand how AI agents work.
