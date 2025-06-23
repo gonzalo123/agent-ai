@@ -1,4 +1,4 @@
-# Building an AI Agent with LangChain, AWS Bedrock and Claude 4 Sonnet
+# Building an AI Agent with Python, LangChain, AWS Bedrock and Claude 4 Sonnet
 
 Today we are going to build an agent with IA. It is just an example of how to build a agent with LangChain and AWS Bedrock and Claude 4 Sonnet. The agent will be a "mathematical expert" capable of performing complex calculations and providing detailed explanations of its reasoning process. The idea is to provide the agent with the ability to perform mathematical operations like addition, subtraction. In fact, with additions and subtractions, we can perform all the mathematical operations, like multiplication, division, exponentiation, square root, etc. The agent will be able to perform these operations step by step, providing a detailed explanation of its reasoning process. I know that we don't need to use AI to perform these operations, but the idea is to show how to build an agent with LangChain and AWS Bedrock and Claude 4 Sonnet.
 
