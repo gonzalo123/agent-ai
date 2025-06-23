@@ -1,0 +1,5 @@
+/venv/
+/src/env/local/.env
+.coverage
+/htmlcov
+__pycache__
