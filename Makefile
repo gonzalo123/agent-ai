@@ -1,10 +1,10 @@
 # Makefile for Math Expert LLM Application Tests
 
-.PHONY: help test test-unit test-integration test-performance test-fast test-coverage clean install-dev check-deps
+.PHONY: help test test-unit test-integration test-performance test-fast test-coverage clean install-dev check-deps type-check lint format
 
 # Default target
 help:
-	@echo "Math Expert LLM Application - Test Commands"
+	@echo "Math Expert LLM Application - Development Commands"
 	@echo ""
 	@echo "Available targets:"
 	@echo "  help              Show this help message"
@@ -16,8 +16,11 @@ help:
 	@echo "  test-performance  Run performance/stress tests"
 	@echo "  test-fast         Run fast tests (exclude performance)"
 	@echo "  test-coverage     Run tests with detailed coverage report"
-	@echo "  clean             Clean test artifacts"
+	@echo "  type-check        Run mypy type checking"
 	@echo "  lint              Run code linting"
+	@echo "  format            Format code with black and isort"
+	@echo "  quality           Run all quality checks (lint + type-check)"
+	@echo "  clean             Clean test artifacts"
 	@echo "  format            Format code"
 	@echo ""
 	@echo "Examples:"
@@ -104,14 +107,9 @@ clean:
 lint:
 	@echo "Running code linting..."
 	@if command -v flake8 >/dev/null 2>&1; then \
-		flake8 src/ tests/; \
+		poetry run flake8 src/ tests/; \
 	else \
 		echo "flake8 not found. Install with: poetry add --group dev flake8"; \
-	fi
-	@if command -v mypy >/dev/null 2>&1; then \
-		mypy src/; \
-	else \
-		echo "mypy not found. Install with: poetry add --group dev mypy"; \
 	fi
 
 # Format code (if available)
@@ -174,7 +172,20 @@ setup-dev: install-dev
 	@echo "Development environment setup complete!"
 
 # Quality check (lint + format + test)
-quality: format lint test-fast
+# Type checking
+type-check:
+	@echo "Running mypy type checking..."
+	@python scripts/check_types.py
+
+# Code formatting
+format:
+	@echo "Formatting code..."
+	@poetry run black src/ tests/
+	@poetry run isort src/ tests/
+	@echo "Code formatting completed!"
+
+# Quality checks
+quality: format lint type-check test-fast
 	@echo "Quality check completed!"
 
 # Full CI pipeline

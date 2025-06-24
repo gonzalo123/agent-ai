@@ -1,20 +1,21 @@
 import os
 from enum import IntEnum
 from pathlib import Path
+from typing import Optional, Union
 
 from dotenv import load_dotenv
 
-BASE_DIR = Path(__file__).resolve().parent
-ENVIRONMENT = os.getenv('ENVIRONMENT', 'local')
+BASE_DIR: Path = Path(__file__).resolve().parent
+ENVIRONMENT: str = os.getenv("ENVIRONMENT", "local")
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
-load_dotenv(dotenv_path=Path(BASE_DIR).resolve().joinpath('env', ENVIRONMENT, '.env'))
+DEBUG: bool = os.getenv("DEBUG", "False") == "True"
+load_dotenv(dotenv_path=Path(BASE_DIR).resolve().joinpath("env", ENVIRONMENT, ".env"))
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', False)
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', False)
-AWS_PROFILE_NAME = os.getenv('AWS_PROFILE_NAME', False)
-AWS_REGION = os.getenv('AWS_REGION')
-AWS_ASSUME_ROLE = os.getenv('AWS_ASSUME_ROLE', False)
+AWS_ACCESS_KEY_ID: Optional[str] = os.getenv("AWS_ACCESS_KEY_ID") or None
+AWS_SECRET_ACCESS_KEY: Optional[str] = os.getenv("AWS_SECRET_ACCESS_KEY") or None
+AWS_PROFILE_NAME: Optional[str] = os.getenv("AWS_PROFILE_NAME") or None
+AWS_REGION: Optional[str] = os.getenv("AWS_REGION")
+AWS_ASSUME_ROLE: Union[str, bool] = os.getenv("AWS_ASSUME_ROLE", False)
 
 
 class TokenLimits(IntEnum):
@@ -35,4 +36,4 @@ class TokenLimits(IntEnum):
     MAX_EXTENDED = 15872
 
 
-MAX_TOKENS = TokenLimits.SMALL
+MAX_TOKENS: TokenLimits = TokenLimits.SMALL

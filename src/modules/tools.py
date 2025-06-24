@@ -1,5 +1,4 @@
 import logging
-from typing import List
 
 from langchain.tools import tool
 
@@ -8,8 +7,8 @@ logger = logging.getLogger(__name__)
 
 class MathTools:
 
-    def __init__(self):
-        self.history = []
+    def __init__(self) -> None:
+        self.history: list[str] = []
 
     def _diff_values(self, a: int, b: int) -> int:
         result = a - b
@@ -26,7 +25,7 @@ class MathTools:
             return "No previous operations"
         return "\n".join(self.history[-5:])  # Last 5
 
-    def get_tools(self) -> List:
+    def get_tools(self) -> list:
         @tool
         def diff_values(a: int, b: int) -> int:
             """Calculates the difference between two numbers
